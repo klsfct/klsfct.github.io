@@ -1,31 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>page5</title>
-    <script src="jquery.js"></script>
-    <script src="jquery.cookie.js"></script>
-    <script src="tongji.js"></script>
-</head>
-<body>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>hello world</title>
+		<!--
+		<script type="text/javascript" src="./js/jquery-3.4.1.js" charset="UTF-8"></script>
+		-->
+		<script type="text/javascript" src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" charset="UTF-8"></script>
+		<script = "text/javascript" >
+			function getTime() {
+				var dt = new Date();
+				var arr_week = new Array("星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六");
+				var strWeek = arr_week[dt.getDay()];
+				var strHour = dt.getHours();
+				var strMinutes = dt.getMinutes();
+				var strSeconds = dt.getSeconds();
 
-<p style="font-size: 20px;">
-    <a style="color:red;" href="http://weber.pub/js记录用户行为浏览记录和停留时间/163.html" target="_blank">返回文章</a>
-    <a style="color:red;" href="http://weber.pub" target="_blank">返回网站首页</a>
-</p>
+				if (strMinutes < 10) 
+					strMinutes = "0" + strMinutes;
+				if (strSeconds < 10) 
+					strSeconds = "0" + strSeconds;
+				var strYear = dt.getFullYear() + "年";
+				var strMonth = (dt.getMonth() + 1) + "月";
+				var strDay = dt.getDate() + "日";
+				<!--var strTime=strHour+":"+strMinutes+":"+strSeconds;-->
+				strTime = strHour + ":" + strMinutes;
+				time = strYear + strMonth + strDay + " " + strTime + "  " + strWeek;
+				alert('time:'+time);
+			}
 
-<a href="page1.html">page1</a>
-<a href="page2.html">page2</a>
-<a href="page3.html">page3</a>
-<a href="page4.html">page4</a>
-<a href="page5.html">page5</a>
-<a href="page6.html">page6</a>
-<p id="tj" style="border: 2px solid fuchsia;">
+			function getIp() {
+				$.getScript('http://pv.sohu.com/cityjson',function(){ 
+					var ip=returnCitySN['cip']; 
+					alert('ip:'+ip);
+				})
+			}
+			function test(){
+				getTime();
+				getIp();
+			}
+		</script>
+	</head>
+	<body onload="test()">
+		asd
+	</body>
 
-</p>
-
-<script>
-    $('#tj').html(localStorage.getItem('jsArr'));
-</script>
-</body>
 </html>
